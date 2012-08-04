@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tju.ebs.persistence.AccountMapper">
+
+  <cache />
+  
+  <select id="getAccount" parameterType="string" resultType="Account">
+    SELECT
+      ID AS id,
+      SHORT_NAME AS shortName,
+      FULL_NAME AS fullName
+    FROM ACCOUNT
+    WHERE ID = #{id}
+  </select>
+
+  <select id="getAccountList" resultType="Account">
+    SELECT
+      ID AS id,
+      SHORT_NAME AS shortName,
+      FULL_NAME AS fullName
+    FROM ACCOUNT
+  </select>
+
+</mapper>
