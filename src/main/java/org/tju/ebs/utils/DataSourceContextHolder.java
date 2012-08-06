@@ -1,4 +1,4 @@
-package org.tju.ebs.ds;
+package org.tju.ebs.utils;
 
 import org.springframework.util.Assert;
 
@@ -9,11 +9,11 @@ public class DataSourceContextHolder {
           
    public static void setCurrentDataSource(DataSourceName dsName) {  
       Assert.notNull(dsName, "customerType cannot be null");  
-      contextHolder.set(dsName);  
+      contextHolder.set(dsName);
    }  
   
    public static DataSourceName getCustomerType() {  
-      return (DataSourceName) contextHolder.get();  
+      return contextHolder.get();  
    }  
   
    public static void clearCurrentDataSource() {  

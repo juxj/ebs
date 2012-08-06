@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tju.ebs.persistence.CategoryMapper">
+
+  
+  <select id="getCategoryById" parameterType="string" resultType="Category">
+    SELECT
+      ID AS id,
+      SHORT_NAME AS shortName
+    FROM CATEGORY
+    WHERE ID = #{id}
+  </select>
+
+  <select id="getCategoryList" resultType="Category">
+    SELECT
+      ID AS id,
+      SHORT_NAME AS shortName
+    FROM CATEGORY
+  </select>
+
+</mapper>

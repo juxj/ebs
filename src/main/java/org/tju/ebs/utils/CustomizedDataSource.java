@@ -1,4 +1,4 @@
-package org.tju.ebs.ds;
+package org.tju.ebs.utils;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

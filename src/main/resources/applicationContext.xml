@@ -68,32 +68,34 @@
         <property name="initialSize" value="10"></property>
     </bean>
     
-    <bean id="dataSource" class="org.tju.ebs.ds.CustomizedDataSource">  
+     <bean id="dsProduct1" 
+        class=" org.apache.tomcat.jdbc.pool.DataSource">
+        <property name="driverClassName"
+            value="com.mysql.jdbc.Driver">
+        </property> 
+        <property name="url"
+            value="jdbc:mysql://127.0.0.1:3306/ebs_product_1">
+        </property>
+        <property name="username" value="dba"></property>
+        <property name="password" value="dba"></property>
+        <property name="maxActive" value="100"></property>
+        <property name="maxIdle" value="10"></property>
+        <property name="minIdle" value="2"></property>
+        <property name="initialSize" value="10"></property>
+    </bean>
+    
+    <bean id="dataSource" class="org.tju.ebs.utils.CustomizedDataSource">  
 	   <property name="targetDataSources">  
 	      <map key-type="org.tju.ebs.utils.DataSourceName">  
 	         <entry key="DS_ACCOUNT" value-ref="dsAccount"/>  
-	         <entry key="DS_PRODUCT_0" value-ref="dsProduct0"/>  
+	         <entry key="DS_PRODUCT_0" value-ref="dsProduct0"/> 
+	         <entry key="DS_PRODUCT_1" value-ref="dsProduct1"/>   
 	      </map>  
 	   </property>  
 	   <property name="defaultTargetDataSource" ref="dsAccount"/>  
 	</bean>  
     
-    <!--
-    <bean id="multiDataSource" class="org.tju.ebs.utils.MultiDataSource">  
-	    <property name="clusterDataSources">  
-	        <list>  
-	            <ref bean="dsAccount" />  
-	            <ref bean="dsProduct0" />  
-	        </list>  
-	    </property>  
-	    <property name="mappedDataSources">  
-	        <map>  
-	            <entry key="dsAccount" value-ref="dsAccount" />  
-	            <entry key="dsProduct0" value-ref="dsProduct0" /> 
-	        </map>  
-	    </property>  
-	</bean>  
-    -->
+    
     <!-- transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
@@ -111,7 +113,7 @@
     <!-- define the SqlSessionFactory -->
     <bean id="sfAccount" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="typeAliasesPackage" value="org.tju.ebs.domain.account" />
+        <property name="typeAliasesPackage" value="org.tju.ebs.entity" />
     </bean>
 
     <!-- scan for mappers and let them be autowired -->

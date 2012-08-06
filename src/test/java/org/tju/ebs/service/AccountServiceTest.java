@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.tju.ebs.domain.account.Account;
+import org.tju.ebs.entity.Account;
 
 public class AccountServiceTest {
 	

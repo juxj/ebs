@@ -4,9 +4,8 @@
 
 <mapper namespace="org.tju.ebs.persistence.AccountMapper">
 
-  <cache />
   
-  <select id="getAccount" parameterType="string" resultType="Account">
+  <select id="getAccountById" parameterType="int" resultType="Account">
     SELECT
       ID AS id,
       SHORT_NAME AS shortName,

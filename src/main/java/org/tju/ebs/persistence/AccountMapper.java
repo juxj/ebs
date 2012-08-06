@@ -2,7 +2,7 @@ package org.tju.ebs.persistence;
 
 import java.util.List;
 
-import org.tju.ebs.domain.account.Account;
+import org.tju.ebs.entity.Account;
 
 public interface AccountMapper {
 

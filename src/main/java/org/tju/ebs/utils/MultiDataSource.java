@@ -1,4 +1,4 @@
-package org.tju.ebs.ds;
+package org.tju.ebs.utils;
 
 import java.io.PrintWriter;
 import java.sql.Connection;

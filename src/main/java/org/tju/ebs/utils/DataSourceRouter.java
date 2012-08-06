@@ -1,4 +1,4 @@
-package org.tju.ebs.ds;
+package org.tju.ebs.utils;
 
 public class DataSourceRouter {
 	public static int DATASOURCE_ID;
