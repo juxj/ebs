@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="account" >
+  	<commentGenerator>
+    	<property name="suppressAllComments" value="true"/>
+    	<property name="suppressDate" value="false"/>
+    </commentGenerator>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/account" 
+    	userId="dba" password="dba" />
+    <javaModelGenerator targetPackage="org.tju.ebs.entity" targetProject="ebs">
+    	<property name="rootClass" value="org.tju.ebs.entity.BaseEntity"/>
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="org.tju.ebs.persistence" targetProject="ebs/src/main/resources" />
+    <javaClientGenerator targetPackage="org.tju.ebs.persistence" 
+    		targetProject="ebs" type="XMLMAPPER" />
+
+    <table schema="" tableName="account" />
+    <table schema="" tableName="account_product" />
+    <table schema="" tableName="product" />
+    <table schema="" tableName="product_server" />
+    <table schema="" tableName="user" />
+  </context>
+</generatorConfiguration>

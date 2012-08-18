@@ -52,44 +52,10 @@
         <property name="initialSize" value="10"></property>
     </bean>
     
-    <bean id="dsProduct0" 
-        class=" org.apache.tomcat.jdbc.pool.DataSource">
-        <property name="driverClassName"
-            value="com.mysql.jdbc.Driver">
-        </property> 
-        <property name="url"
-            value="jdbc:mysql://127.0.0.1:3306/ebs_product_0">
-        </property>
-        <property name="username" value="dba"></property>
-        <property name="password" value="dba"></property>
-        <property name="maxActive" value="100"></property>
-        <property name="maxIdle" value="10"></property>
-        <property name="minIdle" value="2"></property>
-        <property name="initialSize" value="10"></property>
-    </bean>
-    
-     <bean id="dsProduct1" 
-        class=" org.apache.tomcat.jdbc.pool.DataSource">
-        <property name="driverClassName"
-            value="com.mysql.jdbc.Driver">
-        </property> 
-        <property name="url"
-            value="jdbc:mysql://127.0.0.1:3306/ebs_product_1">
-        </property>
-        <property name="username" value="dba"></property>
-        <property name="password" value="dba"></property>
-        <property name="maxActive" value="100"></property>
-        <property name="maxIdle" value="10"></property>
-        <property name="minIdle" value="2"></property>
-        <property name="initialSize" value="10"></property>
-    </bean>
-    
     <bean id="dataSource" class="org.tju.ebs.utils.CustomizedDataSource">  
 	   <property name="targetDataSources">  
 	      <map key-type="org.tju.ebs.utils.DataSourceName">  
 	         <entry key="DS_ACCOUNT" value-ref="dsAccount"/>  
-	         <entry key="DS_PRODUCT_0" value-ref="dsProduct0"/> 
-	         <entry key="DS_PRODUCT_1" value-ref="dsProduct1"/>   
 	      </map>  
 	   </property>  
 	   <property name="defaultTargetDataSource" ref="dsAccount"/>  
@@ -103,6 +69,7 @@
 
     <!-- enable component scanning (beware that this does not enable mapper scanning!) -->    
     <context:component-scan base-package="org.tju.ebs.service" />
+    <context:component-scan base-package="org.tju.ebs.dao" />
 
     <!-- enable autowire -->
     <context:annotation-config />

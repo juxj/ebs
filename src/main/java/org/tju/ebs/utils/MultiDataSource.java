@@ -12,11 +12,10 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tju.ebs.service.AccountService;
 
 public class MultiDataSource implements DataSource{
 	
-	static  Logger logger = LoggerFactory.getLogger(AccountService.class); 
+	static  Logger logger = LoggerFactory.getLogger(MultiDataSource.class); 
     
     //当前线程对应的实际DataSource   
     private  ThreadLocal<DataSource> currentDataSourceHolder =  new  ThreadLocal<DataSource>();  

@@ -16,9 +16,9 @@
   <body>
     
     <ul>
-    <c:forEach items="${accountList}" var="item">
-    	<li><a href="/ebs/category/showCategoryHome/${item.id }.do">${item.id }, ${item.shortName }</a></li>
-    </c:forEach>
+	    <c:forEach items="${accountList}" var="item">
+	    	<li><a href="/ebs/category/showCategoryHome/${item.id }.do">${item.id }, ${item.shortName }</a></li>
+	    </c:forEach>
     </ul>
     <br>
   </body>
