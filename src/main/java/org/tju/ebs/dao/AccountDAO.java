@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tju.ebs.entity.Account;
-import org.tju.ebs.entity.AccountExample;
 import org.tju.ebs.persistence.AccountMapper;
+import org.tju.ebs.utils.DataSourceContextHolder;
+import org.tju.ebs.utils.DataSourceName;
 
 @Service
 public class AccountDAO {
@@ -19,8 +20,8 @@ public class AccountDAO {
 	}
 	
 	public List<Account> getAccountList(){
-		AccountExample accountExample = new AccountExample();
-		return this.accountMapper.selectByExample(accountExample);
+		DataSourceContextHolder.setCurrentDataSource(DataSourceName.DS_ACCOUNT);
+		return this.accountMapper.selectByExample(null);
 	}
 	
 	

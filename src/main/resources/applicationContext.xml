@@ -42,7 +42,7 @@
             value="com.mysql.jdbc.Driver">
         </property> 
         <property name="url"
-            value="jdbc:mysql://127.0.0.1:3306/ebs_account">
+            value="jdbc:mysql://127.0.0.1:3306/account">
         </property>
         <property name="username" value="dba"></property>
         <property name="password" value="dba"></property>
