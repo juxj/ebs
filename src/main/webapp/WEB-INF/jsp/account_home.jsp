@@ -16,8 +16,12 @@
   <body>
     
     <ul>
+    	
+    	<form action="./edit/0.do">
+    		<input type="submit" value="create a new account.">
+    	</form>
 	    <c:forEach items="${accountList}" var="item">
-	    	<li><a href="/ebs/category/showCategoryHome/${item.id }.do">${item.id }, ${item.shortName }</a></li>
+	    	<li><a href="./edit/${item.id }.do">${item.id }, ${item.shortName }, , ${item.fullName }</a></li>
 	    </c:forEach>
     </ul>
     <br>

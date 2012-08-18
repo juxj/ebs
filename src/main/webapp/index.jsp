@@ -14,6 +14,6 @@
   </head>
   
   <body>
-    <a href="account/showAccountHome.do"> Account Home. </a><br>
+    <a href="account/showHome.do"> Account Home. </a><br>
   </body>
 </html>
