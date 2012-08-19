@@ -2,7 +2,7 @@ package org.tju.ebs.entity;
 
 import java.util.Date;
 
-public class AccountProduct extends BaseEntity {
+public class AccountProduct extends AbstractEntity {
     private String id;
 
     private Integer accountId;

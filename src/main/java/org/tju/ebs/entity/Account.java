@@ -1,17 +1,20 @@
 package org.tju.ebs.entity;
 
-public class Account extends BaseEntity {
-    private Integer id;
+public class Account extends AbstractEntity {
+	
+    private String id;
 
     private String shortName;
 
     private String fullName;
 
-    public Integer getId() {
+    private Integer sequence;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -29,5 +32,13 @@ public class Account extends BaseEntity {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Integer getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
     }
 }

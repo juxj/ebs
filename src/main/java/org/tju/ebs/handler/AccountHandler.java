@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.tju.ebs.entity.Account;
 import org.tju.ebs.service.AccountService;
 
+import com.mysql.jdbc.StringUtils;
+
 
 @Controller
 @RequestMapping("/account/")
@@ -33,15 +35,15 @@ public class AccountHandler {
 	
 	@RequestMapping(value="edit/{accountId}", method=RequestMethod.GET)
 	public ModelAndView editAccount(
-			@PathVariable Integer accountId, 
+			@PathVariable String accountId, 
             HttpServletRequest request,
             HttpServletResponse response){
 		Account  account = null;
 		
-		if (accountId != null && accountId>0) {
-			account = this.accountService.getAccountById(accountId);
-		} else {
+		if (StringUtils.isNullOrEmpty(accountId)) {
 			account = new Account();
+		} else {
+			account = this.accountService.getAccountById(accountId);
 		}
 		return new ModelAndView("edit_account", "account", account);
 	}

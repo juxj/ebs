@@ -9,7 +9,7 @@
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/account" 
     	userId="dba" password="dba" />
     <javaModelGenerator targetPackage="org.tju.ebs.entity" targetProject="ebs">
-    	<property name="rootClass" value="org.tju.ebs.entity.BaseEntity"/>
+    	<property name="rootClass" value="org.tju.ebs.entity.AbstractEntity"/>
     </javaModelGenerator>
     <sqlMapGenerator targetPackage="org.tju.ebs.persistence" targetProject="ebs/src/main/resources" />
     <javaClientGenerator targetPackage="org.tju.ebs.persistence" 

@@ -1,6 +1,6 @@
 package org.tju.ebs.entity;
 
-public class User extends BaseEntity {
+public class User extends AbstractEntity {
     private String id;
 
     private String userName;

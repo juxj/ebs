@@ -1,6 +1,6 @@
 package org.tju.ebs.entity;
 
-public class Product extends BaseEntity {
+public class Product extends AbstractEntity {
     private String id;
 
     private String shortName;

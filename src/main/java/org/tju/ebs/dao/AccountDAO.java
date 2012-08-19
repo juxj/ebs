@@ -1,35 +1,32 @@
 package org.tju.ebs.dao;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tju.ebs.entity.Account;
+import org.tju.ebs.entity.AccountExample;
+import org.tju.ebs.entity.AccountExample.Criteria;
+import org.tju.ebs.persistence.AbstractMapper;
 import org.tju.ebs.persistence.AccountMapper;
-import org.tju.ebs.utils.DataSourceContextHolder;
-import org.tju.ebs.utils.DataSourceName;
+import org.tju.ebs.utils.Pagination;
 
 @Service
-public class AccountDAO {
+public class AccountDAO extends AbstractDAO <Account, AccountExample> {
+	
 	
 	@Autowired
 	private AccountMapper accountMapper;
-	
-	public Account getAccountById(Integer id) {
-		return this.accountMapper.selectByPrimaryKey(id);
+
+	@Override
+	protected AbstractMapper<Account, AccountExample> getMapper() {
+		return this.accountMapper;
 	}
 	
-	public List<Account> getAccountList(){
-		DataSourceContextHolder.setCurrentDataSource(DataSourceName.DS_ACCOUNT);
-		return this.accountMapper.selectByExample(null);
+	public Pagination<Account> getAccountList(int sequence) {
+		AccountExample example = new AccountExample();
+		Criteria c = example.createCriteria();
+		c.andSequenceGreaterThan(sequence);
+		return this.getByExample(example);
 	}
 	
 	
-	public void save(Account account) {
-		if (account.getId() == null) {
-			this.accountMapper.insert(account);
-		} else {
-			this.accountMapper.updateByPrimaryKey(account);
-		}
-	}
 }
