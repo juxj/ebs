@@ -15,10 +15,12 @@
     <javaClientGenerator targetPackage="org.tju.ebs.persistence" 
     		targetProject="ebs" type="XMLMAPPER" />
 
-    <table schema="" tableName="account" />
+    <table schema="" tableName="registration" />
+    <!--  
     <table schema="" tableName="account_product" />
     <table schema="" tableName="product" />
     <table schema="" tableName="product_server" />
     <table schema="" tableName="user" />
+    -->
   </context>
 </generatorConfiguration>

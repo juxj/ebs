@@ -1,0 +1,32 @@
+/*color style*/
+.lcblue, a.lcblue { color : #0f479c; }
+.lchot, a.lchot { color : #bd0a01; }
+.black, a.black { color : #000; }
+.red-bold, .red-bold a, .red-bold a:hover { color : #97181d; font-weight : bold; }
+.red, .red a, .red a:hover { color : #97181d; }
+.white, .white a, .white a:hover { color : #fff; }
+.gray, .gray a, .gray a:hover { color : #555; }
+/*container*/
+.container_960 { margin-left: auto; margin-right: auto; width: 960px; }
+.grid_230, .grid_710 { display: inline; float: left; margin-left: 5px; margin-right: 5px; }
+.container_960 .grid_230 { width: 230px; }
+.container_960 .grid_710 { width: 710px; }
+.container_960 .grid_350 { width: 350px; }
+/*position and margin*/
+.fl { float : left; }
+.fr { float : right; }
+.margin_lr_40 { margin:0 40px; }
+.center { margin:0 auto; }
+.hr_5, .hr_10 { font-size : 1px; line-height : 1px; clear : both; }
+.hr_5 { height : 5px; }
+.hr_10 { height : 10px; }
+.clear { clear : both; display : block; overflow : hidden; visibility : hidden; width : 0; height : 0;}
+.clearfix:before, .clearfix:after { content : "\0020"; display : block; overflow : hidden; visibility : hidden; width : 0; height : 0; }
+.clearfix:after { clear : both; }
+.input-focus { 
+	background:#FFFFCC; border:1px solid #97181d; 
+}
+.form_header { line-height:30px; height:30px; background:url(/images/notice.png) 0 7px no-repeat; padding:0 25px; }
+.form_body { padding:0 25px; }
+/*按钮样式*/
+.btn_gray { background : url(/images/btn_bg.gif) repeat-x; height:26px; border:1px solid #aeadad; font-weight:bold; cursor:pointer; }

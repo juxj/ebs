@@ -24,7 +24,6 @@
   </repositories>
   <dependencies>
 	<!-- MyBatis -->
-	
 	<dependency>
 		<groupId>jstl</groupId>
 		<artifactId>jstl</artifactId>

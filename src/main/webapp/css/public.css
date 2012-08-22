@@ -1,0 +1,71 @@
+@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
+	p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, 
+	dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, 
+	var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, 
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav, 
+	output, ruby, section, summary, time, mark, audio, video { 
+	margin: 0; padding: 0; border: 0; font-size: 100%; 
+	font: inherit; vertical-align: baseline; 
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+	footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0;}
+body { 
+	margin : 0; padding : 0 0 12px 0; font-size : 12px; 
+	line-height : 22px; 
+	font-family:"微软雅黑", "宋体", Helvetica Neue, Helvetica, Arial, sans-serif; 
+	background : #fff;
+}
+a.nofocus:focus { text-decoration : none; }
+a { outline : none; }
+a { color : #424240; text-decoration : none; }
+a:hover { color : #97181d; text-decoration : underline; }
+hr { border : #ccc solid 0; border-top-width : 1px; clear : both; height : 0; }
+h1 { font-size : 25px; }
+h2 { font-size : 23px; }
+h3 { font-size : 21px; }
+h4 { font-size : 19px; }
+h5 { font-size : 17px; }
+h6 { font-size : 14px; }
+body { min-width: 960px; }
+img { display : block; }
+img, table, tr, td { border:none; border-collapse:collapse }
+input,select{vertical-align:middle}
+button { border:none; }
+form label{ cursor:pointer;}
+form input[type=text] { 
+		width:192px; height:26px; line-height:20px; font-size:16px; 
+		border:1px solid #d3d3d3; padding-left:5px;  
+		font-family:"微软雅黑", "宋体", Helvetica Neue, Helvetica, Arial, sans-serif;  
+		font-size:16px;
+}
+form input[type="submit"] {
+		line-height:20px; font-size:16px; 
+		border:1px solid #d3d3d3; padding:5px;  
+		font-family:"微软雅黑", "宋体", Helvetica Neue, Helvetica, Arial, sans-serif;  
+		font-size:14px;}
+}
+form select {
+	float: left; margin:5px 5px 0 0; height: 22px; line-height: 14px 
+}
+form dt { 
+	border-bottom:1px solid #CCC; color:#97181d; margin:20px 20px 40px; padding:10px;
+}
+form dd {
+	overflow : hidden; min-height:30px; _height:30px; padding-bottom:15px;
+	display:inline-block; width:800px; line-height:30px; margin-left:30px;
+}
+form dd h6 {
+	float:left; width:140px; text-align:right; display:inline;
+}
+form dd:after { 
+	content:'.'; clear:both; display:block; height:0; visibility:hidden; line-height:0 
+}
+form dd {zoom:1;}

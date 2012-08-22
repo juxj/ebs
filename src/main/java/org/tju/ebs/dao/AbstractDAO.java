@@ -20,24 +20,23 @@ public abstract  class AbstractDAO <T extends AbstractEntity, E>{
 		return this.getMapper().selectByExample(null);
 	}
 	
-	public Pagination<T> getByExample(E e) {
-		
+	public Pagination<T> getByExample(E e, int pageNo, int pageSize) {
 		int recordCount = this.getMapper().countByExample(e);
-		List<T> data = this.getMapper().selectByExample(e);
-		
+		List<T> data = this.getMapper().selectByExample(e).subList(pageNo*pageSize, pageSize);
 		Pagination<T> p = new Pagination<T>();
 		p.setRecordCount(recordCount);
 		p.setData(data);
-		
 		return p;
 	}
 	
-	public void save(T t) {
+	public T save(T t) {
 		if (StringUtils.isNullOrEmpty(t.getId())){
+			t.setId(java.util.UUID.randomUUID().toString());
 			this.getMapper().insert(t);
 		} else {
 			this.getMapper().updateByPrimaryKey(t);
 		}
+		return t;
 	}
 	
 	public void delete(T t) {

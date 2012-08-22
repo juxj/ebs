@@ -21,11 +21,11 @@ public class AccountDAO extends AbstractDAO <Account, AccountExample> {
 		return this.accountMapper;
 	}
 	
-	public Pagination<Account> getAccountList(int sequence) {
+	public Pagination<Account> getAccountList(int sequence, int pageNo, int pageSize) {
 		AccountExample example = new AccountExample();
 		Criteria c = example.createCriteria();
 		c.andSequenceGreaterThan(sequence);
-		return this.getByExample(example);
+		return this.getByExample(example, pageNo, pageSize);
 	}
 	
 	

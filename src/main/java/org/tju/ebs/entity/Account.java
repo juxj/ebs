@@ -2,7 +2,12 @@ package org.tju.ebs.entity;
 
 public class Account extends AbstractEntity {
 	
-    private String id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3736296537778788348L;
+
+	private String id;
 
     private String shortName;
 

@@ -20,16 +20,16 @@ import com.mysql.jdbc.StringUtils;
 
 @Controller
 @RequestMapping("/account/")
-public class AccountHandler {
+public class AccountHandler extends AbstractHandler{
 	
 	@Autowired
 	private AccountService accountService;
 	
 	private List<Account> accountList;
 
-	@RequestMapping(value="showHome", method=RequestMethod.GET)
-	public ModelAndView showAccountHome() {
-		accountList = this.accountService.getAccountList();
+	@RequestMapping(value="showHome/{pageNo}", method=RequestMethod.GET)
+	public ModelAndView showAccountHome(@PathVariable Integer pageNo) {
+		accountList = this.accountService.getAccountList(pageNo, this.PAGE_SIZE);
 		return new ModelAndView("account_home", "accountList", accountList);
 	}
 	
@@ -54,7 +54,7 @@ public class AccountHandler {
 			HttpServletRequest request,
             HttpServletResponse response) {
 		this.accountService.saveAccount(account);
-		return this.showAccountHome();
+		return this.showAccountHome(0);
 	}
 	
 }
