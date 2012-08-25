@@ -1,22 +1,25 @@
 package org.tju.ebs.entity;
 
-public class User extends AbstractEntity {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -6974951922745173877L;
+import java.util.Date;
 
-	private String id;
+public class User extends AbstractEntity {
+    private String id;
 
     private String userName;
 
+    private String email;
+
     private String password;
 
-    private String email;
+    private String companyId;
 
     private String mobile;
 
-    private Integer accountId;
+    private String status;
+
+    private Date lastLoginTime;
+
+    private Integer totalLoginTimes;
 
     public String getId() {
         return id;
@@ -34,6 +37,14 @@ public class User extends AbstractEntity {
         this.userName = userName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -42,12 +53,12 @@ public class User extends AbstractEntity {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCompanyId() {
+        return companyId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public String getMobile() {
@@ -58,11 +69,27 @@ public class User extends AbstractEntity {
         this.mobile = mobile;
     }
 
-    public Integer getAccountId() {
-        return accountId;
+    public String getStatus() {
+        return status;
     }
 
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Integer getTotalLoginTimes() {
+        return totalLoginTimes;
+    }
+
+    public void setTotalLoginTimes(Integer totalLoginTimes) {
+        this.totalLoginTimes = totalLoginTimes;
     }
 }

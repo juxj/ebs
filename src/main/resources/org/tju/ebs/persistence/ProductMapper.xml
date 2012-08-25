@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="short_name" property="shortName" jdbcType="VARCHAR" />
     <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="unit_price" property="unitPrice" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, short_name, full_name, status
+    id, short_name, full_name, unit_price
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.ProductExample" >
     select
@@ -100,9 +100,9 @@
   </delete>
   <insert id="insert" parameterType="org.tju.ebs.entity.Product" >
     insert into product (id, short_name, full_name, 
-      status)
+      unit_price)
     values (#{id,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+      #{unitPrice,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="org.tju.ebs.entity.Product" >
     insert into product
@@ -116,8 +116,8 @@
       <if test="fullName != null" >
         full_name,
       </if>
-      <if test="status != null" >
-        status,
+      <if test="unitPrice != null" >
+        unit_price,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -130,8 +130,8 @@
       <if test="fullName != null" >
         #{fullName,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -153,8 +153,8 @@
       <if test="record.fullName != null" >
         full_name = #{record.fullName,jdbcType=VARCHAR},
       </if>
-      <if test="record.status != null" >
-        status = #{record.status,jdbcType=INTEGER},
+      <if test="record.unitPrice != null" >
+        unit_price = #{record.unitPrice,jdbcType=REAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -166,7 +166,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       short_name = #{record.shortName,jdbcType=VARCHAR},
       full_name = #{record.fullName,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER}
+      unit_price = #{record.unitPrice,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -180,8 +180,8 @@
       <if test="fullName != null" >
         full_name = #{fullName,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=REAL},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -190,7 +190,7 @@
     update product
     set short_name = #{shortName,jdbcType=VARCHAR},
       full_name = #{fullName,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      unit_price = #{unitPrice,jdbcType=REAL}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

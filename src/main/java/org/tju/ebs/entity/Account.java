@@ -1,19 +1,17 @@
 package org.tju.ebs.entity;
 
+import java.util.Date;
+
 public class Account extends AbstractEntity {
-	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 3736296537778788348L;
+    private String id;
 
-	private String id;
-
-    private String shortName;
+    private String firstName;
 
     private String fullName;
 
-    private Integer sequence;
+    private Date registerDate;
+
+    private String status;
 
     public String getId() {
         return id;
@@ -23,12 +21,12 @@ public class Account extends AbstractEntity {
         this.id = id;
     }
 
-    public String getShortName() {
-        return shortName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getFullName() {
@@ -39,11 +37,19 @@ public class Account extends AbstractEntity {
         this.fullName = fullName;
     }
 
-    public Integer getSequence() {
-        return sequence;
+    public Date getRegisterDate() {
+        return registerDate;
     }
 
-    public void setSequence(Integer sequence) {
-        this.sequence = sequence;
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

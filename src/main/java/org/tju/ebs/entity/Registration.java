@@ -3,22 +3,9 @@ package org.tju.ebs.entity;
 import java.util.Date;
 
 public class Registration extends AbstractEntity {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1120608111610809626L;
+    private String id;
 
-	private String id;
-	
-    public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	private String firstName;
+    private String firstName;
 
     private String lastName;
 
@@ -30,7 +17,13 @@ public class Registration extends AbstractEntity {
 
     private Date applyDate;
 
-    private String status;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -79,13 +72,4 @@ public class Registration extends AbstractEntity {
     public void setApplyDate(Date applyDate) {
         this.applyDate = applyDate;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
 }

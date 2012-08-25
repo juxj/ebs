@@ -3,9 +3,10 @@
 <mapper namespace="org.tju.ebs.persistence.AccountMapper" >
   <resultMap id="BaseResultMap" type="org.tju.ebs.entity.Account" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
+    <result column="first_name" property="firstName" jdbcType="VARCHAR" />
     <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="sequence" property="sequence" jdbcType="INTEGER" />
+    <result column="register_date" property="registerDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, short_name, full_name, sequence
+    id, first_name, full_name, register_date, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.AccountExample" >
     select
@@ -99,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.tju.ebs.entity.Account" >
-    insert into account (id, short_name, full_name, 
-      sequence)
-    values (#{id,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
-      #{sequence,jdbcType=INTEGER})
+    insert into account (id, first_name, full_name, 
+      register_date, status)
+    values (#{id,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{registerDate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.tju.ebs.entity.Account" >
     insert into account
@@ -110,28 +111,34 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="shortName != null" >
-        short_name,
+      <if test="firstName != null" >
+        first_name,
       </if>
       <if test="fullName != null" >
         full_name,
       </if>
-      <if test="sequence != null" >
-        sequence,
+      <if test="registerDate != null" >
+        register_date,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="shortName != null" >
-        #{shortName,jdbcType=VARCHAR},
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
       </if>
       <if test="fullName != null" >
         #{fullName,jdbcType=VARCHAR},
       </if>
-      <if test="sequence != null" >
-        #{sequence,jdbcType=INTEGER},
+      <if test="registerDate != null" >
+        #{registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -147,14 +154,17 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.shortName != null" >
-        short_name = #{record.shortName,jdbcType=VARCHAR},
+      <if test="record.firstName != null" >
+        first_name = #{record.firstName,jdbcType=VARCHAR},
       </if>
       <if test="record.fullName != null" >
         full_name = #{record.fullName,jdbcType=VARCHAR},
       </if>
-      <if test="record.sequence != null" >
-        sequence = #{record.sequence,jdbcType=INTEGER},
+      <if test="record.registerDate != null" >
+        register_date = #{record.registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -164,9 +174,10 @@
   <update id="updateByExample" parameterType="map" >
     update account
     set id = #{record.id,jdbcType=VARCHAR},
-      short_name = #{record.shortName,jdbcType=VARCHAR},
+      first_name = #{record.firstName,jdbcType=VARCHAR},
       full_name = #{record.fullName,jdbcType=VARCHAR},
-      sequence = #{record.sequence,jdbcType=INTEGER}
+      register_date = #{record.registerDate,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,23 +185,27 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.tju.ebs.entity.Account" >
     update account
     <set >
-      <if test="shortName != null" >
-        short_name = #{shortName,jdbcType=VARCHAR},
+      <if test="firstName != null" >
+        first_name = #{firstName,jdbcType=VARCHAR},
       </if>
       <if test="fullName != null" >
         full_name = #{fullName,jdbcType=VARCHAR},
       </if>
-      <if test="sequence != null" >
-        sequence = #{sequence,jdbcType=INTEGER},
+      <if test="registerDate != null" >
+        register_date = #{registerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.tju.ebs.entity.Account" >
     update account
-    set short_name = #{shortName,jdbcType=VARCHAR},
+    set first_name = #{firstName,jdbcType=VARCHAR},
       full_name = #{fullName,jdbcType=VARCHAR},
-      sequence = #{sequence,jdbcType=INTEGER}
+      register_date = #{registerDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

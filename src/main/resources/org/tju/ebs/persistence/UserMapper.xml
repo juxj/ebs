@@ -4,10 +4,13 @@
   <resultMap id="BaseResultMap" type="org.tju.ebs.entity.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="account_id" property="accountId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="total_login_times" property="totalLoginTimes" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_name, password, email, mobile, account_id
+    id, user_name, email, password, company_id, mobile, status, last_login_time, total_login_times
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.UserExample" >
     select
@@ -101,11 +104,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.tju.ebs.entity.User" >
-    insert into user (id, user_name, password, 
-      email, mobile, account_id
+    insert into user (id, user_name, email, 
+      password, company_id, mobile, 
+      status, last_login_time, total_login_times
       )
-    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{totalLoginTimes,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.tju.ebs.entity.User" >
@@ -117,17 +122,26 @@
       <if test="userName != null" >
         user_name,
       </if>
+      <if test="email != null" >
+        email,
+      </if>
       <if test="password != null" >
         password,
       </if>
-      <if test="email != null" >
-        email,
+      <if test="companyId != null" >
+        company_id,
       </if>
       <if test="mobile != null" >
         mobile,
       </if>
-      <if test="accountId != null" >
-        account_id,
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="totalLoginTimes != null" >
+        total_login_times,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -137,17 +151,26 @@
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+      <if test="companyId != null" >
+        #{companyId,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
         #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="accountId != null" >
-        #{accountId,jdbcType=INTEGER},
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalLoginTimes != null" >
+        #{totalLoginTimes,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -166,17 +189,26 @@
       <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=VARCHAR},
       </if>
       <if test="record.mobile != null" >
         mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.accountId != null" >
-        account_id = #{record.accountId,jdbcType=INTEGER},
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLoginTime != null" >
+        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.totalLoginTimes != null" >
+        total_login_times = #{record.totalLoginTimes,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -187,10 +219,13 @@
     update user
     set id = #{record.id,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      company_id = #{record.companyId,jdbcType=VARCHAR},
       mobile = #{record.mobile,jdbcType=VARCHAR},
-      account_id = #{record.accountId,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=VARCHAR},
+      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      total_login_times = #{record.totalLoginTimes,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -201,17 +236,26 @@
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="accountId != null" >
-        account_id = #{accountId,jdbcType=INTEGER},
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalLoginTimes != null" >
+        total_login_times = #{totalLoginTimes,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -219,10 +263,13 @@
   <update id="updateByPrimaryKey" parameterType="org.tju.ebs.entity.User" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
-      account_id = #{accountId,jdbcType=INTEGER}
+      status = #{status,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      total_login_times = #{totalLoginTimes,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

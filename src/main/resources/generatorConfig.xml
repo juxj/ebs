@@ -16,11 +16,11 @@
     		targetProject="ebs" type="XMLMAPPER" />
 
     <table schema="" tableName="registration" />
-    <!--  
-    <table schema="" tableName="account_product" />
+    <table schema="" tableName="company_product" />
     <table schema="" tableName="product" />
     <table schema="" tableName="product_server" />
     <table schema="" tableName="user" />
-    -->
+    <table schema="" tableName="company" />
+    <table schema="" tableName="account" />
   </context>
 </generatorConfiguration>

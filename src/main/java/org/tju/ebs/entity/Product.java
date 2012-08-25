@@ -1,18 +1,13 @@
 package org.tju.ebs.entity;
 
 public class Product extends AbstractEntity {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -7184914023273764266L;
-
-	private String id;
+    private String id;
 
     private String shortName;
 
     private String fullName;
 
-    private Integer status;
+    private Float unitPrice;
 
     public String getId() {
         return id;
@@ -38,11 +33,11 @@ public class Product extends AbstractEntity {
         this.fullName = fullName;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Float getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setUnitPrice(Float unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }

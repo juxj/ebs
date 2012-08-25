@@ -1,28 +1,23 @@
 package org.tju.ebs.entity;
 
 public class ProductServer extends AbstractEntity {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 176013308011404546L;
-
-	private String id;
+    private String id;
 
     private String productId;
 
-    private String productName;
+    private String ip;
 
-    private String ipAddr;
+    private String domain;
 
     private String port;
 
-    private Integer maxTotal;
+    private Integer capability;
 
     private Integer current;
 
-    private String status;
+    private Integer available;
 
-    private String statusName;
+    private String status;
 
     public String getId() {
         return id;
@@ -40,20 +35,20 @@ public class ProductServer extends AbstractEntity {
         this.productId = productId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getIp() {
+        return ip;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
-    public String getIpAddr() {
-        return ipAddr;
+    public String getDomain() {
+        return domain;
     }
 
-    public void setIpAddr(String ipAddr) {
-        this.ipAddr = ipAddr;
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 
     public String getPort() {
@@ -64,12 +59,12 @@ public class ProductServer extends AbstractEntity {
         this.port = port;
     }
 
-    public Integer getMaxTotal() {
-        return maxTotal;
+    public Integer getCapability() {
+        return capability;
     }
 
-    public void setMaxTotal(Integer maxTotal) {
-        this.maxTotal = maxTotal;
+    public void setCapability(Integer capability) {
+        this.capability = capability;
     }
 
     public Integer getCurrent() {
@@ -80,19 +75,19 @@ public class ProductServer extends AbstractEntity {
         this.current = current;
     }
 
+    public Integer getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Integer available) {
+        this.available = available;
+    }
+
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getStatusName() {
-        return statusName;
-    }
-
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
     }
 }

@@ -314,63 +314,63 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNull() {
-            addCriterion("status is null");
+        public Criteria andUnitPriceIsNull() {
+            addCriterion("unit_price is null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIsNotNull() {
-            addCriterion("status is not null");
+        public Criteria andUnitPriceIsNotNull() {
+            addCriterion("unit_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Integer value) {
-            addCriterion("status =", value, "status");
+        public Criteria andUnitPriceEqualTo(Float value) {
+            addCriterion("unit_price =", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Integer value) {
-            addCriterion("status <>", value, "status");
+        public Criteria andUnitPriceNotEqualTo(Float value) {
+            addCriterion("unit_price <>", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Integer value) {
-            addCriterion("status >", value, "status");
+        public Criteria andUnitPriceGreaterThan(Float value) {
+            addCriterion("unit_price >", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("status >=", value, "status");
+        public Criteria andUnitPriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("unit_price >=", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Integer value) {
-            addCriterion("status <", value, "status");
+        public Criteria andUnitPriceLessThan(Float value) {
+            addCriterion("unit_price <", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("status <=", value, "status");
+        public Criteria andUnitPriceLessThanOrEqualTo(Float value) {
+            addCriterion("unit_price <=", value, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Integer> values) {
-            addCriterion("status in", values, "status");
+        public Criteria andUnitPriceIn(List<Float> values) {
+            addCriterion("unit_price in", values, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Integer> values) {
-            addCriterion("status not in", values, "status");
+        public Criteria andUnitPriceNotIn(List<Float> values) {
+            addCriterion("unit_price not in", values, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Integer value1, Integer value2) {
-            addCriterion("status between", value1, value2, "status");
+        public Criteria andUnitPriceBetween(Float value1, Float value2) {
+            addCriterion("unit_price between", value1, value2, "unitPrice");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("status not between", value1, value2, "status");
+        public Criteria andUnitPriceNotBetween(Float value1, Float value2) {
+            addCriterion("unit_price not between", value1, value2, "unitPrice");
             return (Criteria) this;
         }
     }

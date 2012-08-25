@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="org.tju.ebs.entity.ProductServer" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="product_id" property="productId" jdbcType="VARCHAR" />
-    <result column="product_name" property="productName" jdbcType="VARCHAR" />
-    <result column="ip_addr" property="ipAddr" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
     <result column="port" property="port" jdbcType="VARCHAR" />
-    <result column="max_total" property="maxTotal" jdbcType="INTEGER" />
+    <result column="capability" property="capability" jdbcType="INTEGER" />
     <result column="current" property="current" jdbcType="INTEGER" />
+    <result column="available" property="available" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="status_name" property="statusName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, product_id, product_name, ip_addr, port, max_total, current, status, status_name
+    id, product_id, ip, domain, port, capability, current, available, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.ProductServerExample" >
     select
@@ -104,13 +104,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.tju.ebs.entity.ProductServer" >
-    insert into product_server (id, product_id, product_name, 
-      ip_addr, port, max_total, 
-      current, status, status_name
+    insert into product_server (id, product_id, ip, 
+      domain, port, capability, 
+      current, available, status
       )
-    values (#{id,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
-      #{ipAddr,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{maxTotal,jdbcType=INTEGER}, 
-      #{current,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{statusName,jdbcType=VARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{domain,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{capability,jdbcType=INTEGER}, 
+      #{current,jdbcType=INTEGER}, #{available,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.tju.ebs.entity.ProductServer" >
@@ -122,26 +122,26 @@
       <if test="productId != null" >
         product_id,
       </if>
-      <if test="productName != null" >
-        product_name,
+      <if test="ip != null" >
+        ip,
       </if>
-      <if test="ipAddr != null" >
-        ip_addr,
+      <if test="domain != null" >
+        domain,
       </if>
       <if test="port != null" >
         port,
       </if>
-      <if test="maxTotal != null" >
-        max_total,
+      <if test="capability != null" >
+        capability,
       </if>
       <if test="current != null" >
         current,
       </if>
+      <if test="available != null" >
+        available,
+      </if>
       <if test="status != null" >
         status,
-      </if>
-      <if test="statusName != null" >
-        status_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -151,26 +151,26 @@
       <if test="productId != null" >
         #{productId,jdbcType=VARCHAR},
       </if>
-      <if test="productName != null" >
-        #{productName,jdbcType=VARCHAR},
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
       </if>
-      <if test="ipAddr != null" >
-        #{ipAddr,jdbcType=VARCHAR},
+      <if test="domain != null" >
+        #{domain,jdbcType=VARCHAR},
       </if>
       <if test="port != null" >
         #{port,jdbcType=VARCHAR},
       </if>
-      <if test="maxTotal != null" >
-        #{maxTotal,jdbcType=INTEGER},
+      <if test="capability != null" >
+        #{capability,jdbcType=INTEGER},
       </if>
       <if test="current != null" >
         #{current,jdbcType=INTEGER},
       </if>
+      <if test="available != null" >
+        #{available,jdbcType=INTEGER},
+      </if>
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="statusName != null" >
-        #{statusName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -189,26 +189,26 @@
       <if test="record.productId != null" >
         product_id = #{record.productId,jdbcType=VARCHAR},
       </if>
-      <if test="record.productName != null" >
-        product_name = #{record.productName,jdbcType=VARCHAR},
+      <if test="record.ip != null" >
+        ip = #{record.ip,jdbcType=VARCHAR},
       </if>
-      <if test="record.ipAddr != null" >
-        ip_addr = #{record.ipAddr,jdbcType=VARCHAR},
+      <if test="record.domain != null" >
+        domain = #{record.domain,jdbcType=VARCHAR},
       </if>
       <if test="record.port != null" >
         port = #{record.port,jdbcType=VARCHAR},
       </if>
-      <if test="record.maxTotal != null" >
-        max_total = #{record.maxTotal,jdbcType=INTEGER},
+      <if test="record.capability != null" >
+        capability = #{record.capability,jdbcType=INTEGER},
       </if>
       <if test="record.current != null" >
         current = #{record.current,jdbcType=INTEGER},
       </if>
+      <if test="record.available != null" >
+        available = #{record.available,jdbcType=INTEGER},
+      </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=VARCHAR},
-      </if>
-      <if test="record.statusName != null" >
-        status_name = #{record.statusName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -219,13 +219,13 @@
     update product_server
     set id = #{record.id,jdbcType=VARCHAR},
       product_id = #{record.productId,jdbcType=VARCHAR},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      ip_addr = #{record.ipAddr,jdbcType=VARCHAR},
+      ip = #{record.ip,jdbcType=VARCHAR},
+      domain = #{record.domain,jdbcType=VARCHAR},
       port = #{record.port,jdbcType=VARCHAR},
-      max_total = #{record.maxTotal,jdbcType=INTEGER},
+      capability = #{record.capability,jdbcType=INTEGER},
       current = #{record.current,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=VARCHAR},
-      status_name = #{record.statusName,jdbcType=VARCHAR}
+      available = #{record.available,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -236,26 +236,26 @@
       <if test="productId != null" >
         product_id = #{productId,jdbcType=VARCHAR},
       </if>
-      <if test="productName != null" >
-        product_name = #{productName,jdbcType=VARCHAR},
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
       </if>
-      <if test="ipAddr != null" >
-        ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      <if test="domain != null" >
+        domain = #{domain,jdbcType=VARCHAR},
       </if>
       <if test="port != null" >
         port = #{port,jdbcType=VARCHAR},
       </if>
-      <if test="maxTotal != null" >
-        max_total = #{maxTotal,jdbcType=INTEGER},
+      <if test="capability != null" >
+        capability = #{capability,jdbcType=INTEGER},
       </if>
       <if test="current != null" >
         current = #{current,jdbcType=INTEGER},
       </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=INTEGER},
+      </if>
       <if test="status != null" >
         status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="statusName != null" >
-        status_name = #{statusName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -263,13 +263,13 @@
   <update id="updateByPrimaryKey" parameterType="org.tju.ebs.entity.ProductServer" >
     update product_server
     set product_id = #{productId,jdbcType=VARCHAR},
-      product_name = #{productName,jdbcType=VARCHAR},
-      ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
       port = #{port,jdbcType=VARCHAR},
-      max_total = #{maxTotal,jdbcType=INTEGER},
+      capability = #{capability,jdbcType=INTEGER},
       current = #{current,jdbcType=INTEGER},
-      status = #{status,jdbcType=VARCHAR},
-      status_name = #{statusName,jdbcType=VARCHAR}
+      available = #{available,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

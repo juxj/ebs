@@ -27,7 +27,6 @@ public class RegistrationHandler extends AbstractHandler{
 	@RequestMapping(value="save", method=RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("registration")Registration registration){
 		registration.setApplyDate(Calendar.getInstance().getTime());
-		registration.setStatus("0");
 		this.accountService.saveRegistration(registration);
 		return new ModelAndView("success");
 	}
