@@ -3,7 +3,12 @@ package org.tju.ebs.entity;
 import java.util.Date;
 
 public class User extends AbstractEntity {
-    private String id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1084168547327279985L;
+
+	private String id;
 
     private String userName;
 

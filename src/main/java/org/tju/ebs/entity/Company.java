@@ -1,7 +1,12 @@
 package org.tju.ebs.entity;
 
 public class Company extends AbstractEntity {
-    private String id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -751016597207199848L;
+
+	private String id;
 
     private String shortName;
 

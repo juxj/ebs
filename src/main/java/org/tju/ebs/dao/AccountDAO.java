@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tju.ebs.entity.Account;
 import org.tju.ebs.entity.AccountExample;
-import org.tju.ebs.entity.AccountExample.Criteria;
 import org.tju.ebs.persistence.AbstractMapper;
 import org.tju.ebs.persistence.AccountMapper;
 import org.tju.ebs.utils.Pagination;
@@ -23,7 +22,6 @@ public class AccountDAO extends AbstractDAO <Account, AccountExample> {
 	
 	public Pagination<Account> getAccountList(int sequence, int pageNo, int pageSize) {
 		AccountExample example = new AccountExample();
-		Criteria c = example.createCriteria();
 		return this.getByExample(example, pageNo, pageSize);
 	}
 	

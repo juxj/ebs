@@ -29,6 +29,10 @@ public abstract  class AbstractDAO <T extends AbstractEntity, E>{
 		return p;
 	}
 	
+	public List<T> getByExample(E e) {
+		return this.getMapper().selectByExample(e);
+	}
+	
 	public T save(T t) {
 		if (StringUtils.isNullOrEmpty(t.getId())){
 			t.setId(java.util.UUID.randomUUID().toString());

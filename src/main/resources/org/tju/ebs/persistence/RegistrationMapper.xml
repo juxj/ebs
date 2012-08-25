@@ -9,6 +9,7 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, first_name, last_name, company_name, email, mobile, apply_date
+    id, first_name, last_name, company_name, email, mobile, apply_date, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.RegistrationExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="org.tju.ebs.entity.Registration" >
     insert into registration (id, first_name, last_name, 
       company_name, email, mobile, 
-      apply_date)
+      apply_date, status)
     values (#{id,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
       #{companyName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{applyDate,jdbcType=TIMESTAMP})
+      #{applyDate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.tju.ebs.entity.Registration" >
     insert into registration
@@ -133,6 +134,9 @@
       <if test="applyDate != null" >
         apply_date,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="applyDate != null" >
         #{applyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.applyDate != null" >
         apply_date = #{record.applyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       company_name = #{record.companyName,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       mobile = #{record.mobile,jdbcType=VARCHAR},
-      apply_date = #{record.applyDate,jdbcType=TIMESTAMP}
+      apply_date = #{record.applyDate,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="applyDate != null" >
         apply_date = #{applyDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -237,7 +251,8 @@
       company_name = #{companyName,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
-      apply_date = #{applyDate,jdbcType=TIMESTAMP}
+      apply_date = #{applyDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

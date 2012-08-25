@@ -1,7 +1,12 @@
 package org.tju.ebs.entity;
 
 public class ProductServer extends AbstractEntity {
-    private String id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 388457475062961282L;
+
+	private String id;
 
     private String productId;
 

@@ -14,7 +14,7 @@
     <sqlMapGenerator targetPackage="org.tju.ebs.persistence" targetProject="ebs/src/main/resources" />
     <javaClientGenerator targetPackage="org.tju.ebs.persistence" 
     		targetProject="ebs" type="XMLMAPPER" />
-
+  	<!--
     <table schema="" tableName="registration" />
     <table schema="" tableName="company_product" />
     <table schema="" tableName="product" />
@@ -22,5 +22,9 @@
     <table schema="" tableName="user" />
     <table schema="" tableName="company" />
     <table schema="" tableName="account" />
+    <table schema="" tableName="account" />
+    <table schema="" tableName="mail_template" />
+    -->
+    <table schema="" tableName="message" />
   </context>
 </generatorConfiguration>

@@ -2,6 +2,9 @@ package org.tju.ebs.handler;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,7 +22,7 @@ public class RegistrationHandler extends AbstractHandler{
 	private AccountService accountService;
 	
 	@RequestMapping(value="register", method=RequestMethod.GET)
-	public ModelAndView register(){
+	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Registration registration = new Registration();
 		return new ModelAndView("register", "registration", registration);
 	}
