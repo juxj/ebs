@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.tju.ebs.persistence.MailTemplateMapper" >
-  <resultMap id="BaseResultMap" type="org.tju.ebs.entity.MailTemplate" >
+<mapper namespace="org.tju.ebs.persistence.MessageTemplateMapper" >
+  <resultMap id="BaseResultMap" type="org.tju.ebs.entity.MessageTemplate" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="subject" property="subject" jdbcType="VARCHAR" />
-    <result column="call_back_action" property="callBackAction" jdbcType="VARCHAR" />
-    <result column="parameters" property="parameters" jdbcType="VARCHAR" />
+    <result column="expired_hours" property="expiredHours" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="org.tju.ebs.entity.MailTemplate" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="org.tju.ebs.entity.MessageTemplate" extends="BaseResultMap" >
     <result column="body" property="body" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -70,12 +70,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, code, subject, call_back_action, parameters
+    id, code, name, subject, expired_hours
   </sql>
   <sql id="Blob_Column_List" >
     body
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="org.tju.ebs.entity.MailTemplateExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="org.tju.ebs.entity.MessageTemplateExample" >
     select
     <if test="distinct" >
       distinct
@@ -83,7 +83,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from mail_template
+    from message_template
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -91,13 +91,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.MailTemplateExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.MessageTemplateExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from mail_template
+    from message_template
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -110,29 +110,29 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from mail_template
+    from message_template
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from mail_template
+    delete from message_template
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="org.tju.ebs.entity.MailTemplateExample" >
-    delete from mail_template
+  <delete id="deleteByExample" parameterType="org.tju.ebs.entity.MessageTemplateExample" >
+    delete from message_template
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.tju.ebs.entity.MailTemplate" >
-    insert into mail_template (id, code, subject, 
-      call_back_action, parameters, body
+  <insert id="insert" parameterType="org.tju.ebs.entity.MessageTemplate" >
+    insert into message_template (id, code, name, 
+      subject, expired_hours, body
       )
-    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, 
-      #{callBackAction,jdbcType=VARCHAR}, #{parameters,jdbcType=VARCHAR}, #{body,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{expiredHours,jdbcType=INTEGER}, #{body,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.tju.ebs.entity.MailTemplate" >
-    insert into mail_template
+  <insert id="insertSelective" parameterType="org.tju.ebs.entity.MessageTemplate" >
+    insert into message_template
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -140,14 +140,14 @@
       <if test="code != null" >
         code,
       </if>
+      <if test="name != null" >
+        name,
+      </if>
       <if test="subject != null" >
         subject,
       </if>
-      <if test="callBackAction != null" >
-        call_back_action,
-      </if>
-      <if test="parameters != null" >
-        parameters,
+      <if test="expiredHours != null" >
+        expired_hours,
       </if>
       <if test="body != null" >
         body,
@@ -160,28 +160,28 @@
       <if test="code != null" >
         #{code,jdbcType=VARCHAR},
       </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
       <if test="subject != null" >
         #{subject,jdbcType=VARCHAR},
       </if>
-      <if test="callBackAction != null" >
-        #{callBackAction,jdbcType=VARCHAR},
-      </if>
-      <if test="parameters != null" >
-        #{parameters,jdbcType=VARCHAR},
+      <if test="expiredHours != null" >
+        #{expiredHours,jdbcType=INTEGER},
       </if>
       <if test="body != null" >
         #{body,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.tju.ebs.entity.MailTemplateExample" resultType="java.lang.Integer" >
-    select count(*) from mail_template
+  <select id="countByExample" parameterType="org.tju.ebs.entity.MessageTemplateExample" resultType="java.lang.Integer" >
+    select count(*) from message_template
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update mail_template
+    update message_template
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
@@ -189,14 +189,14 @@
       <if test="record.code != null" >
         code = #{record.code,jdbcType=VARCHAR},
       </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
       <if test="record.subject != null" >
         subject = #{record.subject,jdbcType=VARCHAR},
       </if>
-      <if test="record.callBackAction != null" >
-        call_back_action = #{record.callBackAction,jdbcType=VARCHAR},
-      </if>
-      <if test="record.parameters != null" >
-        parameters = #{record.parameters,jdbcType=VARCHAR},
+      <if test="record.expiredHours != null" >
+        expired_hours = #{record.expiredHours,jdbcType=INTEGER},
       </if>
       <if test="record.body != null" >
         body = #{record.body,jdbcType=LONGVARCHAR},
@@ -207,42 +207,42 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update mail_template
+    update message_template
     set id = #{record.id,jdbcType=VARCHAR},
       code = #{record.code,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
       subject = #{record.subject,jdbcType=VARCHAR},
-      call_back_action = #{record.callBackAction,jdbcType=VARCHAR},
-      parameters = #{record.parameters,jdbcType=VARCHAR},
+      expired_hours = #{record.expiredHours,jdbcType=INTEGER},
       body = #{record.body,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update mail_template
+    update message_template
     set id = #{record.id,jdbcType=VARCHAR},
       code = #{record.code,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
       subject = #{record.subject,jdbcType=VARCHAR},
-      call_back_action = #{record.callBackAction,jdbcType=VARCHAR},
-      parameters = #{record.parameters,jdbcType=VARCHAR}
+      expired_hours = #{record.expiredHours,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.tju.ebs.entity.MailTemplate" >
-    update mail_template
+  <update id="updateByPrimaryKeySelective" parameterType="org.tju.ebs.entity.MessageTemplate" >
+    update message_template
     <set >
       <if test="code != null" >
         code = #{code,jdbcType=VARCHAR},
       </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
       <if test="subject != null" >
         subject = #{subject,jdbcType=VARCHAR},
       </if>
-      <if test="callBackAction != null" >
-        call_back_action = #{callBackAction,jdbcType=VARCHAR},
-      </if>
-      <if test="parameters != null" >
-        parameters = #{parameters,jdbcType=VARCHAR},
+      <if test="expiredHours != null" >
+        expired_hours = #{expiredHours,jdbcType=INTEGER},
       </if>
       <if test="body != null" >
         body = #{body,jdbcType=LONGVARCHAR},
@@ -250,21 +250,21 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.tju.ebs.entity.MailTemplate" >
-    update mail_template
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.tju.ebs.entity.MessageTemplate" >
+    update message_template
     set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       subject = #{subject,jdbcType=VARCHAR},
-      call_back_action = #{callBackAction,jdbcType=VARCHAR},
-      parameters = #{parameters,jdbcType=VARCHAR},
+      expired_hours = #{expiredHours,jdbcType=INTEGER},
       body = #{body,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.tju.ebs.entity.MailTemplate" >
-    update mail_template
+  <update id="updateByPrimaryKey" parameterType="org.tju.ebs.entity.MessageTemplate" >
+    update message_template
     set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       subject = #{subject,jdbcType=VARCHAR},
-      call_back_action = #{callBackAction,jdbcType=VARCHAR},
-      parameters = #{parameters,jdbcType=VARCHAR}
+      expired_hours = #{expiredHours,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

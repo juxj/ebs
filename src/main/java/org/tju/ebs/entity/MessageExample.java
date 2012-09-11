@@ -245,73 +245,73 @@ public class MessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdIsNull() {
-            addCriterion("template_id is null");
+        public Criteria andSubjectIsNull() {
+            addCriterion("subject is null");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdIsNotNull() {
-            addCriterion("template_id is not null");
+        public Criteria andSubjectIsNotNull() {
+            addCriterion("subject is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdEqualTo(String value) {
-            addCriterion("template_id =", value, "templateId");
+        public Criteria andSubjectEqualTo(String value) {
+            addCriterion("subject =", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdNotEqualTo(String value) {
-            addCriterion("template_id <>", value, "templateId");
+        public Criteria andSubjectNotEqualTo(String value) {
+            addCriterion("subject <>", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdGreaterThan(String value) {
-            addCriterion("template_id >", value, "templateId");
+        public Criteria andSubjectGreaterThan(String value) {
+            addCriterion("subject >", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdGreaterThanOrEqualTo(String value) {
-            addCriterion("template_id >=", value, "templateId");
+        public Criteria andSubjectGreaterThanOrEqualTo(String value) {
+            addCriterion("subject >=", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdLessThan(String value) {
-            addCriterion("template_id <", value, "templateId");
+        public Criteria andSubjectLessThan(String value) {
+            addCriterion("subject <", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdLessThanOrEqualTo(String value) {
-            addCriterion("template_id <=", value, "templateId");
+        public Criteria andSubjectLessThanOrEqualTo(String value) {
+            addCriterion("subject <=", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdLike(String value) {
-            addCriterion("template_id like", value, "templateId");
+        public Criteria andSubjectLike(String value) {
+            addCriterion("subject like", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdNotLike(String value) {
-            addCriterion("template_id not like", value, "templateId");
+        public Criteria andSubjectNotLike(String value) {
+            addCriterion("subject not like", value, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdIn(List<String> values) {
-            addCriterion("template_id in", values, "templateId");
+        public Criteria andSubjectIn(List<String> values) {
+            addCriterion("subject in", values, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdNotIn(List<String> values) {
-            addCriterion("template_id not in", values, "templateId");
+        public Criteria andSubjectNotIn(List<String> values) {
+            addCriterion("subject not in", values, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdBetween(String value1, String value2) {
-            addCriterion("template_id between", value1, value2, "templateId");
+        public Criteria andSubjectBetween(String value1, String value2) {
+            addCriterion("subject between", value1, value2, "subject");
             return (Criteria) this;
         }
 
-        public Criteria andTemplateIdNotBetween(String value1, String value2) {
-            addCriterion("template_id not between", value1, value2, "templateId");
+        public Criteria andSubjectNotBetween(String value1, String value2) {
+            addCriterion("subject not between", value1, value2, "subject");
             return (Criteria) this;
         }
 
@@ -375,73 +375,123 @@ public class MessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesIsNull() {
-            addCriterion("parameter_values is null");
+        public Criteria andClickTimeIsNull() {
+            addCriterion("click_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesIsNotNull() {
-            addCriterion("parameter_values is not null");
+        public Criteria andClickTimeIsNotNull() {
+            addCriterion("click_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesEqualTo(String value) {
-            addCriterion("parameter_values =", value, "parameterValues");
+        public Criteria andClickTimeEqualTo(Date value) {
+            addCriterion("click_time =", value, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesNotEqualTo(String value) {
-            addCriterion("parameter_values <>", value, "parameterValues");
+        public Criteria andClickTimeNotEqualTo(Date value) {
+            addCriterion("click_time <>", value, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesGreaterThan(String value) {
-            addCriterion("parameter_values >", value, "parameterValues");
+        public Criteria andClickTimeGreaterThan(Date value) {
+            addCriterion("click_time >", value, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesGreaterThanOrEqualTo(String value) {
-            addCriterion("parameter_values >=", value, "parameterValues");
+        public Criteria andClickTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("click_time >=", value, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesLessThan(String value) {
-            addCriterion("parameter_values <", value, "parameterValues");
+        public Criteria andClickTimeLessThan(Date value) {
+            addCriterion("click_time <", value, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesLessThanOrEqualTo(String value) {
-            addCriterion("parameter_values <=", value, "parameterValues");
+        public Criteria andClickTimeLessThanOrEqualTo(Date value) {
+            addCriterion("click_time <=", value, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesLike(String value) {
-            addCriterion("parameter_values like", value, "parameterValues");
+        public Criteria andClickTimeIn(List<Date> values) {
+            addCriterion("click_time in", values, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesNotLike(String value) {
-            addCriterion("parameter_values not like", value, "parameterValues");
+        public Criteria andClickTimeNotIn(List<Date> values) {
+            addCriterion("click_time not in", values, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesIn(List<String> values) {
-            addCriterion("parameter_values in", values, "parameterValues");
+        public Criteria andClickTimeBetween(Date value1, Date value2) {
+            addCriterion("click_time between", value1, value2, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesNotIn(List<String> values) {
-            addCriterion("parameter_values not in", values, "parameterValues");
+        public Criteria andClickTimeNotBetween(Date value1, Date value2) {
+            addCriterion("click_time not between", value1, value2, "clickTime");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesBetween(String value1, String value2) {
-            addCriterion("parameter_values between", value1, value2, "parameterValues");
+        public Criteria andExpiredDateIsNull() {
+            addCriterion("expired_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andParameterValuesNotBetween(String value1, String value2) {
-            addCriterion("parameter_values not between", value1, value2, "parameterValues");
+        public Criteria andExpiredDateIsNotNull() {
+            addCriterion("expired_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateEqualTo(Date value) {
+            addCriterion("expired_date =", value, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateNotEqualTo(Date value) {
+            addCriterion("expired_date <>", value, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateGreaterThan(Date value) {
+            addCriterion("expired_date >", value, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("expired_date >=", value, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateLessThan(Date value) {
+            addCriterion("expired_date <", value, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateLessThanOrEqualTo(Date value) {
+            addCriterion("expired_date <=", value, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateIn(List<Date> values) {
+            addCriterion("expired_date in", values, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateNotIn(List<Date> values) {
+            addCriterion("expired_date not in", values, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateBetween(Date value1, Date value2) {
+            addCriterion("expired_date between", value1, value2, "expiredDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpiredDateNotBetween(Date value1, Date value2) {
+            addCriterion("expired_date not between", value1, value2, "expiredDate");
             return (Criteria) this;
         }
     }

@@ -3,14 +3,14 @@ package org.tju.ebs.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MailTemplateExample {
+public class MessageTemplateExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public MailTemplateExample() {
+    public MessageTemplateExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -244,6 +244,76 @@ public class MailTemplateExample {
             return (Criteria) this;
         }
 
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
         public Criteria andSubjectIsNull() {
             addCriterion("subject is null");
             return (Criteria) this;
@@ -314,143 +384,63 @@ public class MailTemplateExample {
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionIsNull() {
-            addCriterion("call_back_action is null");
+        public Criteria andExpiredHoursIsNull() {
+            addCriterion("expired_hours is null");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionIsNotNull() {
-            addCriterion("call_back_action is not null");
+        public Criteria andExpiredHoursIsNotNull() {
+            addCriterion("expired_hours is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionEqualTo(String value) {
-            addCriterion("call_back_action =", value, "callBackAction");
+        public Criteria andExpiredHoursEqualTo(Integer value) {
+            addCriterion("expired_hours =", value, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionNotEqualTo(String value) {
-            addCriterion("call_back_action <>", value, "callBackAction");
+        public Criteria andExpiredHoursNotEqualTo(Integer value) {
+            addCriterion("expired_hours <>", value, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionGreaterThan(String value) {
-            addCriterion("call_back_action >", value, "callBackAction");
+        public Criteria andExpiredHoursGreaterThan(Integer value) {
+            addCriterion("expired_hours >", value, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionGreaterThanOrEqualTo(String value) {
-            addCriterion("call_back_action >=", value, "callBackAction");
+        public Criteria andExpiredHoursGreaterThanOrEqualTo(Integer value) {
+            addCriterion("expired_hours >=", value, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionLessThan(String value) {
-            addCriterion("call_back_action <", value, "callBackAction");
+        public Criteria andExpiredHoursLessThan(Integer value) {
+            addCriterion("expired_hours <", value, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionLessThanOrEqualTo(String value) {
-            addCriterion("call_back_action <=", value, "callBackAction");
+        public Criteria andExpiredHoursLessThanOrEqualTo(Integer value) {
+            addCriterion("expired_hours <=", value, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionLike(String value) {
-            addCriterion("call_back_action like", value, "callBackAction");
+        public Criteria andExpiredHoursIn(List<Integer> values) {
+            addCriterion("expired_hours in", values, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionNotLike(String value) {
-            addCriterion("call_back_action not like", value, "callBackAction");
+        public Criteria andExpiredHoursNotIn(List<Integer> values) {
+            addCriterion("expired_hours not in", values, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionIn(List<String> values) {
-            addCriterion("call_back_action in", values, "callBackAction");
+        public Criteria andExpiredHoursBetween(Integer value1, Integer value2) {
+            addCriterion("expired_hours between", value1, value2, "expiredHours");
             return (Criteria) this;
         }
 
-        public Criteria andCallBackActionNotIn(List<String> values) {
-            addCriterion("call_back_action not in", values, "callBackAction");
-            return (Criteria) this;
-        }
-
-        public Criteria andCallBackActionBetween(String value1, String value2) {
-            addCriterion("call_back_action between", value1, value2, "callBackAction");
-            return (Criteria) this;
-        }
-
-        public Criteria andCallBackActionNotBetween(String value1, String value2) {
-            addCriterion("call_back_action not between", value1, value2, "callBackAction");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersIsNull() {
-            addCriterion("parameters is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersIsNotNull() {
-            addCriterion("parameters is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersEqualTo(String value) {
-            addCriterion("parameters =", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersNotEqualTo(String value) {
-            addCriterion("parameters <>", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersGreaterThan(String value) {
-            addCriterion("parameters >", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersGreaterThanOrEqualTo(String value) {
-            addCriterion("parameters >=", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersLessThan(String value) {
-            addCriterion("parameters <", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersLessThanOrEqualTo(String value) {
-            addCriterion("parameters <=", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersLike(String value) {
-            addCriterion("parameters like", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersNotLike(String value) {
-            addCriterion("parameters not like", value, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersIn(List<String> values) {
-            addCriterion("parameters in", values, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersNotIn(List<String> values) {
-            addCriterion("parameters not in", values, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersBetween(String value1, String value2) {
-            addCriterion("parameters between", value1, value2, "parameters");
-            return (Criteria) this;
-        }
-
-        public Criteria andParametersNotBetween(String value1, String value2) {
-            addCriterion("parameters not between", value1, value2, "parameters");
+        public Criteria andExpiredHoursNotBetween(Integer value1, Integer value2) {
+            addCriterion("expired_hours not between", value1, value2, "expiredHours");
             return (Criteria) this;
         }
     }

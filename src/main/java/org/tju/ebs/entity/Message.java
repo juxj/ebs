@@ -7,11 +7,15 @@ public class Message extends AbstractEntity {
 
     private String receiver;
 
-    private String templateId;
+    private String subject;
 
     private Date sendTime;
 
-    private String parameterValues;
+    private Date clickTime;
+
+    private Date expiredDate;
+
+    private String body;
 
     public String getId() {
         return id;
@@ -29,12 +33,12 @@ public class Message extends AbstractEntity {
         this.receiver = receiver;
     }
 
-    public String getTemplateId() {
-        return templateId;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setTemplateId(String templateId) {
-        this.templateId = templateId;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public Date getSendTime() {
@@ -45,11 +49,27 @@ public class Message extends AbstractEntity {
         this.sendTime = sendTime;
     }
 
-    public String getParameterValues() {
-        return parameterValues;
+    public Date getClickTime() {
+        return clickTime;
     }
 
-    public void setParameterValues(String parameterValues) {
-        this.parameterValues = parameterValues;
+    public void setClickTime(Date clickTime) {
+        this.clickTime = clickTime;
+    }
+
+    public Date getExpiredDate() {
+        return expiredDate;
+    }
+
+    public void setExpiredDate(Date expiredDate) {
+        this.expiredDate = expiredDate;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

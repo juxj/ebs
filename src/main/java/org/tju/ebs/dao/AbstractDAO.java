@@ -33,10 +33,19 @@ public abstract  class AbstractDAO <T extends AbstractEntity, E>{
 		return this.getMapper().selectByExample(e);
 	}
 	
+	public T insert(T t) {
+		this.getMapper().insert(t);
+		return t;
+	}
+	
+	public T update(T t) {
+		this.getMapper().updateByPrimaryKey(t);
+		return t;
+	}
+	
 	public T save(T t) {
 		if (StringUtils.isNullOrEmpty(t.getId())){
 			t.setId(java.util.UUID.randomUUID().toString());
-			this.getMapper().insert(t);
 		} else {
 			this.getMapper().updateByPrimaryKey(t);
 		}

@@ -3,12 +3,7 @@ package org.tju.ebs.entity;
 import java.util.Date;
 
 public class Account extends AbstractEntity {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 5689234645737704364L;
-
-	private String id;
+    private String id;
 
     private String firstName;
 

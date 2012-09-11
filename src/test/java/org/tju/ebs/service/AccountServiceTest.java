@@ -16,14 +16,14 @@ public class AccountServiceTest {
 	
 	@Before
 	public void before() {
-		context = new ClassPathXmlApplicationContext(new String[] { "classpath:applicationContext.xml"});
-		accountService = (AccountService) context.getBean("accountService");
+		//context = new ClassPathXmlApplicationContext(new String[] { "classpath:applicationContext.xml"});
+		//accountService = (AccountService) context.getBean("accountService");
 	}
 	
 	@Test
 	public void test() {
-		List<Account> accountList = accountService.getAccountList();
-		System.out.print("========="+accountList.size()+"=============");
+		//List<Account> accountList = accountService.getAccountList();
+		//System.out.print("========="+accountList.size()+"=============");
 	}
 	
 }

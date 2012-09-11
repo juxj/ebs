@@ -13,4 +13,8 @@ public class StringUtil {
 		}
 		return list;
 	}
+	
+	public static String getUUID(){
+		return java.util.UUID.randomUUID().toString();
+	}
 }

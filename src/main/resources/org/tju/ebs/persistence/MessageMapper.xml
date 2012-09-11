@@ -4,9 +4,13 @@
   <resultMap id="BaseResultMap" type="org.tju.ebs.entity.Message" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="receiver" property="receiver" jdbcType="VARCHAR" />
-    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
     <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
-    <result column="parameter_values" property="parameterValues" jdbcType="VARCHAR" />
+    <result column="click_time" property="clickTime" jdbcType="TIMESTAMP" />
+    <result column="expired_date" property="expiredDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.tju.ebs.entity.Message" extends="BaseResultMap" >
+    <result column="body" property="body" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,8 +71,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, receiver, template_id, send_time, parameter_values
+    id, receiver, subject, send_time, click_time, expired_date
   </sql>
+  <sql id="Blob_Column_List" >
+    body
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="org.tju.ebs.entity.MessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.tju.ebs.entity.MessageExample" >
     select
     <if test="distinct" >
@@ -83,9 +106,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from message
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -100,10 +125,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.tju.ebs.entity.Message" >
-    insert into message (id, receiver, template_id, 
-      send_time, parameter_values)
-    values (#{id,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{templateId,jdbcType=VARCHAR}, 
-      #{sendTime,jdbcType=TIMESTAMP}, #{parameterValues,jdbcType=VARCHAR})
+    insert into message (id, receiver, subject, 
+      send_time, click_time, expired_date, 
+      body)
+    values (#{id,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, 
+      #{sendTime,jdbcType=TIMESTAMP}, #{clickTime,jdbcType=TIMESTAMP}, #{expiredDate,jdbcType=TIMESTAMP}, 
+      #{body,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.tju.ebs.entity.Message" >
     insert into message
@@ -114,14 +141,20 @@
       <if test="receiver != null" >
         receiver,
       </if>
-      <if test="templateId != null" >
-        template_id,
+      <if test="subject != null" >
+        subject,
       </if>
       <if test="sendTime != null" >
         send_time,
       </if>
-      <if test="parameterValues != null" >
-        parameter_values,
+      <if test="clickTime != null" >
+        click_time,
+      </if>
+      <if test="expiredDate != null" >
+        expired_date,
+      </if>
+      <if test="body != null" >
+        body,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -131,14 +164,20 @@
       <if test="receiver != null" >
         #{receiver,jdbcType=VARCHAR},
       </if>
-      <if test="templateId != null" >
-        #{templateId,jdbcType=VARCHAR},
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
       </if>
       <if test="sendTime != null" >
         #{sendTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="parameterValues != null" >
-        #{parameterValues,jdbcType=VARCHAR},
+      <if test="clickTime != null" >
+        #{clickTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredDate != null" >
+        #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="body != null" >
+        #{body,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -157,16 +196,35 @@
       <if test="record.receiver != null" >
         receiver = #{record.receiver,jdbcType=VARCHAR},
       </if>
-      <if test="record.templateId != null" >
-        template_id = #{record.templateId,jdbcType=VARCHAR},
+      <if test="record.subject != null" >
+        subject = #{record.subject,jdbcType=VARCHAR},
       </if>
       <if test="record.sendTime != null" >
         send_time = #{record.sendTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.parameterValues != null" >
-        parameter_values = #{record.parameterValues,jdbcType=VARCHAR},
+      <if test="record.clickTime != null" >
+        click_time = #{record.clickTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.expiredDate != null" >
+        expired_date = #{record.expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.body != null" >
+        body = #{record.body,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update message
+    set id = #{record.id,jdbcType=VARCHAR},
+      receiver = #{record.receiver,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      send_time = #{record.sendTime,jdbcType=TIMESTAMP},
+      click_time = #{record.clickTime,jdbcType=TIMESTAMP},
+      expired_date = #{record.expiredDate,jdbcType=TIMESTAMP},
+      body = #{record.body,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,9 +233,10 @@
     update message
     set id = #{record.id,jdbcType=VARCHAR},
       receiver = #{record.receiver,jdbcType=VARCHAR},
-      template_id = #{record.templateId,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
       send_time = #{record.sendTime,jdbcType=TIMESTAMP},
-      parameter_values = #{record.parameterValues,jdbcType=VARCHAR}
+      click_time = #{record.clickTime,jdbcType=TIMESTAMP},
+      expired_date = #{record.expiredDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -188,24 +247,41 @@
       <if test="receiver != null" >
         receiver = #{receiver,jdbcType=VARCHAR},
       </if>
-      <if test="templateId != null" >
-        template_id = #{templateId,jdbcType=VARCHAR},
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
       </if>
       <if test="sendTime != null" >
         send_time = #{sendTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="parameterValues != null" >
-        parameter_values = #{parameterValues,jdbcType=VARCHAR},
+      <if test="clickTime != null" >
+        click_time = #{clickTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredDate != null" >
+        expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="body != null" >
+        body = #{body,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.tju.ebs.entity.Message" >
+    update message
+    set receiver = #{receiver,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      click_time = #{clickTime,jdbcType=TIMESTAMP},
+      expired_date = #{expiredDate,jdbcType=TIMESTAMP},
+      body = #{body,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.tju.ebs.entity.Message" >
     update message
     set receiver = #{receiver,jdbcType=VARCHAR},
-      template_id = #{templateId,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
       send_time = #{sendTime,jdbcType=TIMESTAMP},
-      parameter_values = #{parameterValues,jdbcType=VARCHAR}
+      click_time = #{clickTime,jdbcType=TIMESTAMP},
+      expired_date = #{expiredDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
