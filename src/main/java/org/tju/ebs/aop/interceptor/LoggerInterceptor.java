@@ -1,4 +1,4 @@
-package org.tju.ebs.interceptor;
+package org.tju.ebs.aop.interceptor;
 
 import java.util.Calendar;
 import java.util.Date;

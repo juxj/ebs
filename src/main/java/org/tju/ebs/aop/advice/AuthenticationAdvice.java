@@ -1,4 +1,4 @@
-package org.tju.ebs.interceptor;
+package org.tju.ebs.aop.advice;
 
 import java.lang.reflect.Method;
 

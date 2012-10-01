@@ -11,9 +11,7 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     
-    <bean id="autheticationAdvice" class="org.tju.ebs.interceptor.AuthenticationAdvice"/>
-    
-    
+    <bean id="autheticationAdvice" class="org.tju.ebs.aop.advice.AuthenticationAdvice"/>
     <aop:config>
 		<aop:advisor 
 			pointcut="execution(* *..RegistrationHandler.register(..))" 
@@ -24,8 +22,8 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
     	<property name="interceptors">
     		<list>
-				<bean class="org.tju.ebs.interceptor.LoggerInterceptor"/>
-    			<bean class="org.tju.ebs.interceptor.MaintenanceInterceptor">
+				<bean class="org.tju.ebs.aop.interceptor.LoggerInterceptor"/>
+    			<bean class="org.tju.ebs.aop.interceptor.MaintenanceInterceptor">
 					<property name="startTime" value="2012.09.30.11.12.00"/>
 					<property name="endTime" value="2012.09.30.14.50.00"/>
 					<property name="maintenancePage" value="/ebs/maintenance_page.jsp"/>
