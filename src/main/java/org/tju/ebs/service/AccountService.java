@@ -51,6 +51,8 @@ public class AccountService  extends BaseService {
 		return accountDAO.get(id);
 	}
 	
+	public final static String EMAIL_TEMPLATE= SysConstants.MAIL_TEMPLATE_REGISTRATION;
+	
 	@Transactional
 	public User register(String registrationId, String messageId) throws ServiceException {
 		
@@ -102,26 +104,8 @@ public class AccountService  extends BaseService {
 	@Transactional
 	public ErrorMessage saveRegistration(Registration registration) {
 		ErrorMessage em = null;
-		
 		registration.setStatus("0");
 		registration = this.registrationDAO.save(registration);
-		/*
-		MessageTemplate template = 
-				messageTemplateDAO.getMailTemplateByCode(SysConstants.MAIL_TEMPLATE_REGISTRATION);
-		
-		Message message = new Message();
-		String messageId = StringUtil.getUUID();
-		message.setId(messageId);
-		message.setReceiver(registration.getEmail());
-		message.setSubject(template.getSubject());
-		message.setBody(String.format(template.getBody(),
-				registration.getLastName()+registration.getFirstName(), 
-				SysConstants.BASE_PATH,
-				registration.getId(), messageId));
-		message.setExpiredDate(DateUtil.getDate(Calendar.HOUR_OF_DAY, template.getExpiredHours()));
-		
-		messageDAO.insert(message);
-		*/
 		return em;
 	}
 	
