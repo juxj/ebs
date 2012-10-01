@@ -5,6 +5,9 @@ import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +19,6 @@ import org.tju.ebs.entity.Registration;
 import org.tju.ebs.entity.User;
 import org.tju.ebs.exception.ServiceException;
 import org.tju.ebs.service.AccountService;
-import org.tju.ebs.utils.PageHeader;
 
 @Controller
 @RequestMapping("/registration/")
@@ -27,7 +29,8 @@ public class RegistrationHandler extends AbstractHandler{
 	private AccountService accountService;
 	
 	@RequestMapping(value="register", method=RequestMethod.GET)
-	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView register(HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
 		
 		String view = "register";
 		

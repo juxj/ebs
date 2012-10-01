@@ -105,6 +105,7 @@ public class AccountService  extends BaseService {
 		
 		registration.setStatus("0");
 		registration = this.registrationDAO.save(registration);
+		/*
 		MessageTemplate template = 
 				messageTemplateDAO.getMailTemplateByCode(SysConstants.MAIL_TEMPLATE_REGISTRATION);
 		
@@ -120,7 +121,7 @@ public class AccountService  extends BaseService {
 		message.setExpiredDate(DateUtil.getDate(Calendar.HOUR_OF_DAY, template.getExpiredHours()));
 		
 		messageDAO.insert(message);
-		
+		*/
 		return em;
 	}
 	
