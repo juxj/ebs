@@ -19,13 +19,19 @@ import com.mysql.jdbc.StringUtils;
 
 
 @Controller
-@RequestMapping("/account/")
+@RequestMapping("/account")
 public class AccountHandler extends AbstractHandler{
 	
 	@Autowired
 	private AccountService accountService;
 	
 	private List<Account> accountList;
+	
+	@RequestMapping(value="/welcome")
+	public String welcom(){
+		System.out.println("ppp");
+		return "welcome";
+	}
 
 	@RequestMapping(value="showHome/{pageNo}", method=RequestMethod.GET)
 	public ModelAndView showAccountHome(@PathVariable Integer pageNo) {

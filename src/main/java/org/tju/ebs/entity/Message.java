@@ -3,6 +3,7 @@ package org.tju.ebs.entity;
 import java.util.Date;
 
 public class Message extends AbstractEntity {
+	
     private String id;
 
     private String receiver;
